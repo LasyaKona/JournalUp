@@ -1,0 +1,111 @@
+const express=require('express');
+const cors=require('cors');
+const bcrypt=require('bcrypt');
+const app=express();
+//middlewares
+app.use(cors());
+app.use(express.urlencoded({extended:true}));
+//database connectivity
+const  mysql=require('mysql2');
+const connection=mysql.createConnection({
+    host:'localhost',
+    user:'root',
+    password:'root@Mysql',
+    database:'journal'
+});
+connection.connect((err)=>{
+    if(err)
+    {
+        console.error("error connecting to the database",err);
+    }
+    console.log("connected to the database");
+});
+//base route
+app.get('/',(req,res)=>{
+    console.log(req);
+    res.status(200);
+})
+app.post('/registeruser',async(req,res)=>{
+    console.log(req.body);
+    const{email,password}=req.body;
+    try{
+        //hash the password
+        const hashpassword=await bcrypt.hash(password,10);
+        connection.query(`insert into user(emailid,hashpassword)values('${email}','${hashpassword}')`,(err,result)=>{
+            if(err)
+            {
+                 return res.status(500).send("no");
+            }
+            res.status(200).send("ok");
+        });
+
+
+    }
+    catch(err){
+        console.log(err);
+        res.send(500).send('error while hashing password');
+    }
+
+})
+//login 
+app.post('/loginuser',async(req,res)=>{
+    console.log("user logged in",req.body);
+    const{email,password}=req.body;
+    let hashpassword='';
+    let userid='';
+    
+    connection.query(`select id,hashpassword from user where emailid='${email}'`,async(err,result)=>{
+        if(err)
+        {
+            res.status(500);
+            return;
+        }
+    
+        
+        hashpassword=result[0].hashpassword;
+        userid=result[0].id;
+        console.log(hashpassword);
+        let response=await bcrypt.compare(password,hashpassword);
+        if(response){
+            res.status(200).send({userid:userid});
+            return;
+        } 
+        else{
+            res.status(500).send({message:"error occured"});
+            return;
+
+        }
+    })
+
+        
+    
+    
+})
+//post
+app.post('/userpost',async(req,res)=>{
+    const{posttitle,postarea,userid}=req.body;
+    connection.query(`insert into posts(userid,posttitle,postarea) values('${userid}',"${posttitle}","${postarea}")`,async(err,response)=>{
+        if(err)
+        {
+            res.status(500);
+            return;
+        }
+        res.status(200);
+    })
+
+})
+//only i can see my posts and i can read them
+app.get('/getmyposts',async(req,res)=>{
+    connection.query(`select * from posts where userid='${req.query.userid}'`,(err,result)=>{
+        if(err)
+        {
+            res.status(500);
+            return;
+        }
+        res.status(200).send(result);
+    })
+})
+
+app.listen(3000,()=>{
+    console.log("server started");
+})

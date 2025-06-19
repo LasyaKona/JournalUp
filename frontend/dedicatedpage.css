@@ -1,0 +1,18 @@
+.anypost{
+    width:550px;
+    border:1px black solid;
+    margin:auto;
+    border-radius: 10px;
+    padding:10px;
+    margin:10px auto;
+    box-shadow:0px 0px 6px rgba(0,0,0,0.3);
+
+
+}
+.body{
+    height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}

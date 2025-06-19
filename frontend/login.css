@@ -1,0 +1,17 @@
+/*to align login page to the center*/
+body
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+}
+#loginbtn{
+    background-color: #B0C4DE;
+}
+.card-body{
+    text-align: center;
+}
+.form{
+    text-align: start;
+}
