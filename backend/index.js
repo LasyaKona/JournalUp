@@ -47,40 +47,34 @@ app.post('/registeruser',async(req,res)=>{
     }
 
 })
-//login 
-app.post('/loginuser',async(req,res)=>{
-    console.log("user logged in",req.body);
-    const{email,password}=req.body;
-    let hashpassword='';
-    let userid='';
-    
-    connection.query(`select id,hashpassword from user where emailid='${email}'`,async(err,result)=>{
-        if(err)
-        {
-            res.status(500);
-            return;
-        }
-    
-        
-        hashpassword=result[0].hashpassword;
-        userid=result[0].id;
-        console.log(hashpassword);
-        let response=await bcrypt.compare(password,hashpassword);
-        if(response){
-            res.status(200).send({userid:userid});
-            return;
-        } 
-        else{
-            res.status(500).send({message:"error occured"});
-            return;
+app.post('/loginuser', async (req, res) => {
+    const { email, password } = req.body;
 
-        }
-    })
+    connection.query(
+        `SELECT id, hashpassword FROM user WHERE emailid='${email}'`,
+        async (err, result) => {
+            if (err) {
+                return res.status(500).json({ message: "DB error" });
+            }
 
-        
-    
-    
-})
+            if (result.length === 0) {
+                return res.status(401).json({ message: "User not found" });
+            }
+
+            const hashpassword = result[0].hashpassword;
+            const userid = result[0].id;
+
+            const match = await bcrypt.compare(password, hashpassword);
+
+            if (match) {
+                return res.status(200).json({ userid });
+            } else {
+                return res.status(401).json({ message: "Wrong password" });
+            }
+        }
+    );
+});
+
 //post
 app.post('/userpost',async(req,res)=>{
     const{posttitle,postarea,userid}=req.body;
