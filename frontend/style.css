@@ -1,0 +1,74 @@
+.navbar-custom {
+    background-color: violet;
+}
+.navbar-custom .nav-link, .navbar-custom .navbar-brand {
+    color: white;
+    font-weight: bold;
+}
+.navbar-custom .nav-link:hover {
+    color: #ddd;
+}
+
+.main-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 20px;
+}
+.maintext {
+    max-width: 50%;
+}
+.maintext h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+.maintext p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+.mainimage img {
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+.journey-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 20px;
+    background-color: #f8f9fa;
+}
+.journeytext {
+    max-width: 50%;
+}
+.journeytext h2 {
+    margin-bottom: 20px;
+}
+.journeytext ol {
+    padding-left: 20px;
+    line-height: 1.6;
+}
+.journeyimage img {
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+.affirmation-section {
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .main-section, .journey-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    .maintext, .journeytext, .mainimage, .journeyimage {
+        max-width: 100%;
+    }
+    .mainimage, .journeyimage {
+        margin-top: 20px;
+    }
+}
