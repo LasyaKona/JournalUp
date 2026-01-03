@@ -2,6 +2,7 @@ const express=require('express');
 const cors=require('cors');
 const bcrypt=require('bcrypt');
 const app=express();
+const PORT=process.env.PORT ||  3000;
 //middlewares
 app.use(cors());
 app.use(express.urlencoded({extended:true}));
@@ -100,6 +101,6 @@ app.get('/getmyposts',async(req,res)=>{
     })
 })
 
-app.listen(3000,'0.0.0.0',()=>{
+app.listen(PORT,()=>{
     console.log("server started");
 })
