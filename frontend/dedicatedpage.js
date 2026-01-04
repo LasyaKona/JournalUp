@@ -12,7 +12,7 @@ window.onload = function () {
   }
 
   // Fetch posts for the specific user
-  fetch(`http://localhost:3000/getmyposts?userid=${userid}`)
+  fetch(`http://44.220.80.191:3000/getmyposts?userid=${userid}`)
     .then(res => res.json())
     .then(posts => {
       const container = document.querySelector('.anypost');

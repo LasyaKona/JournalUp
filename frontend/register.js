@@ -8,7 +8,7 @@ form.addEventListener('submit', async (e) => {
 
     const formdata = new URLSearchParams(new FormData(form));
 
-    const response = await fetch('http://localhost:3000/registeruser', {
+    const response = await fetch('http://44.220.80.191:3000/registeruser', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: formdata
