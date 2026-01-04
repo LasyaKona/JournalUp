@@ -9,7 +9,7 @@ app.use(express.urlencoded({extended:true}));
 //database connectivity
 const  mysql=require('mysql2');
 const connection=mysql.createConnection({
-    host:'localhost',
+    host:'mysqldb.cj1nqkixnsmv.us-east-1.rds.amazonaws.com',
     user:'root',
     password:'MYsql1234',
     database:'journal'
