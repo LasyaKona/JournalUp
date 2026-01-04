@@ -11,7 +11,7 @@ const  mysql=require('mysql2');
 const connection=mysql.createConnection({
     host:'localhost',
     user:'root',
-    password:'root@Mysql123',
+    password:'MYsql1234',
     database:'journal'
 });
 connection.connect((err)=>{
