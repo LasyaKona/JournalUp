@@ -3,16 +3,19 @@ const cors=require('cors');
 const bcrypt=require('bcrypt');
 const app=express();
 const PORT=process.env.PORT ||  3000;
+require('dotenv').config();
 //middlewares
 app.use(cors());
 app.use(express.urlencoded({extended:true}));
+
 //database connectivity
 const  mysql=require('mysql2');
+
 const connection=mysql.createConnection({
-    host:'mysqldb.cj1nqkixnsmv.us-east-1.rds.amazonaws.com',
-    user:'root',
-    password:'MYsql1234',
-    database:'journal'
+    host:process.env.host,
+    user:process.env.user,
+    password:process.env.password,
+    database:process.env.database
 });
 connection.connect((err)=>{
     if(err)
