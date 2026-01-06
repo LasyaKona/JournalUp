@@ -43,15 +43,11 @@ The project focuses on helping users reflect on their day, improve their mindset
 
 **Database:**
 - MySQL (hosted on AWS RDS)
-
 ---
 
 ## Hosting
 
 As a beginner eager to explore cloud technologies, I hosted this website using **Amazon EC2** to gain hands-on experience with cloud services. This project allowed me to learn about deploying and managing web applications in the cloud. The backend is connected to a MySQL database hosted on **AWS RDS**, providing valuable insights into cloud infrastructure and database management.
-
-- **EC2 URL**: [Insert your EC2 URL here]
-- **RDS Database**: Managed using AWS RDS for secure and scalable data storage.
 
 ---
 
@@ -61,16 +57,20 @@ Here are some screenshots to give you a visual overview of the project:
 
 **EC2 Instance**  
    This shows the EC2 instance I created to host the project.  
+   
    ![EC2 Instance](https://raw.githubusercontent.com/LasyaKona/JournalUp/ce53353c8ee71c7b72f2a152394ab44dd805b80c/Screenshot%20(105).png)
 
 2. **RDS Database**  
-   The MySQL database hosted on AWS RDS.  
+   The MySQL database hosted on AWS RDS.
+   
    ![RDS Database](https://raw.githubusercontent.com/LasyaKona/JournalUp/ce53353c8ee71c7b72f2a152394ab44dd805b80c/Screenshot%20(106).png)
 
-3. **EC2 Terminal**  
-   The EC2 terminal displaying that the server has started and is connected to the database.  
+4. **EC2 Terminal**  
+   The EC2 terminal displaying that the server has started and is connected to the database.
+   
    ![EC2 Terminal](https://raw.githubusercontent.com/LasyaKona/JournalUp/ce53353c8ee71c7b72f2a152394ab44dd805b80c/Screenshot%20(104).png)
 
-4. **Website**  
-   The live website hosted on the EC2 instance.  
+6. **Website**  
+   The live website hosted on the EC2 instance.
+   
    ![Website](https://raw.githubusercontent.com/LasyaKona/JournalUp/ce53353c8ee71c7b72f2a152394ab44dd805b80c/Screenshot%20(103).png)
